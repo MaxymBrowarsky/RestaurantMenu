@@ -23,10 +23,15 @@ public class Connection {
     }
 
     public static void Select() throws SQLException {
-        statement.executeQuery("SELECT * FROM products");
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM products");
+        while (resultSet.next()){
+
+            System.out.println("qq"+resultSet.getInt(1)+resultSet.getString(2)+resultSet.getString(3)+
+                    resultSet.getInt(4)+resultSet.getInt(5)+resultSet.getInt(6));
+        }
     }
 
-    public static void Add(Product product) throws SQLException {
+    public static void add(Product product) throws SQLException {
 
         statement.executeUpdate("insert into products(id,Name,Description,Weight,Price,Rating) value("+
                 product.getId()+",\""+
@@ -37,11 +42,11 @@ public class Connection {
                 product.getRating()+")");
     }
 
-    public static void Delete(Integer id) throws SQLException {
+    public static void delete(Integer id) throws SQLException {
         statement.execute("Delete from products where id = "+id+" ");
     }
 
-    public static void Update(Product product) throws SQLException {
+    public static void update(Product product) throws SQLException {
 
         statement.executeUpdate("update products set " +
                 "Name = \""+product.getName()+"\"," +
@@ -51,8 +56,6 @@ public class Connection {
                 "Rating = "+product.getRating()+" " +
                 "where id = "+product.getId()+";");
     }
-
-
 
     public static void Con() throws ParserConfigurationException, IOException, SQLException, ClassNotFoundException{
         try{

@@ -3,15 +3,16 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 public class DBPanel extends JPanel {
     private static final String ADD_ITEM_NAME = "ADD";
     private static final String REMOVE_ITEM_NAME = "REMOVE";
-    private static final Object[] COL_NAMES = {
+    private static final String[] COL_NAMES = {
         "ID", "Name" , "Description", "Weight", "Price", "Rating"
     };
-    public DBPanel(Object[][] cells) {
-        TableModel model = new ProductsModel();
+    public DBPanel(ArrayList<Product> products) {
+        TableModel model = new ProductsModel(products, COL_NAMES);
 
         JTable table = new JTable(model);
 
@@ -19,7 +20,15 @@ public class DBPanel extends JPanel {
 
         JMenuItem menuItemAdd = new JMenuItem(ADD_ITEM_NAME);
         menuItemAdd.addActionListener((ActionEvent a) -> {
-            cells[]
+<<<<<<< HEAD
+<<<<<<< HEAD
+            //cells[]
+=======
+//            cells[]
+>>>>>>> 72c1cb1d4f91249c55283af6eab8a6adfff6fbf2
+=======
+//            cells[]
+>>>>>>> 72c1cb1d4f91249c55283af6eab8a6adfff6fbf2
         });
 
         JMenuItem menuItemRemove = new JMenuItem(REMOVE_ITEM_NAME);
