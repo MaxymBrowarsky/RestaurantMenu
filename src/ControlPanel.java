@@ -57,6 +57,7 @@ public class ControlPanel extends JPanel{
             fileChooser.setCurrentDirectory(new File("."));
             fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
             fileChooser.setFileFilter(new FileNameExtensionFilter("XML files", "xml"));
+            fileChooser.showOpenDialog(null);
             XMLHandler xmlHandler = new XMLHandler();
             FileHandler fh = new FileHandler();
             RestaurantMenu rMenu = new RestaurantMenu();

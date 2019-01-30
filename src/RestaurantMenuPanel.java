@@ -15,5 +15,6 @@ public class RestaurantMenuPanel extends JPanel {
         ProductsModel tableModel = new ProductsModel(products, COL_NAMES);
         JTable table = new JTable(tableModel);
         this.add(new JScrollPane(table));
+        this.productsTable = table;
     }
 }
