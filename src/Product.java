@@ -94,7 +94,7 @@ public class Product {
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    protected Product clone() throws CloneNotSupportedException {
         Product product = new Product(getId(),getName(),getDescription(),getWeight(),getPrice(),getRating());
         return product;
     }

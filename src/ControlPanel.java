@@ -69,7 +69,7 @@ public class ControlPanel extends JPanel{
                 try {
                     restaurantMenu.add(p.clone());
 
-                } catch (Exception e) {
+                } catch (Exception exp) {
                     exit(1);
                 }
             }
