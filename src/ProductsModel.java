@@ -47,7 +47,7 @@ public class ProductsModel extends AbstractTableModel {
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         super.setValueAt(aValue, rowIndex, columnIndex);
-//        products[rowIndex].update();
+        products.get(rowIndex).update();
     }
 
 }
