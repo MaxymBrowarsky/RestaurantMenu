@@ -5,6 +5,12 @@ public class RestaurantMenuPanel extends JPanel {
     private static final String[] COL_NAMES = {
             "ID", "Name" , "Description", "Weight", "Price", "Rating"
     };
+    private JTable productsTable;
+
+    public JTable getProductsTable() {
+        return productsTable;
+    }
+
     public RestaurantMenuPanel(ArrayList<Product> products) {
         ProductsModel tableModel = new ProductsModel(products, COL_NAMES);
         JTable table = new JTable(tableModel);

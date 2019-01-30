@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.File;
@@ -11,12 +12,17 @@ public class MainMenuBar extends JMenuBar {
     private static final String MENU_FORMER_NAME = "Menu Former";
     private static final String PRODUCTS_ITEM_NAME = "Products";
     private static final String HELP_ITEM_NAME = "Open docs";
-    public static final String OPEN_MENU_ITEM_NAME = "Open file with menu";
+    private static final String OPEN_MENU_ITEM_NAME = "Open file with menu";
+    private static final String FORM_MENU_ITEM_NAME = "Form new menu";
     public MainMenuBar() {
         JMenu DBMenu = new JMenu(DBMenu_NAME);
         JMenu HelpMenu = new JMenu(HELP_MENU_NAME);
         JMenu MenuFormer = new JMenu(MENU_FORMER_NAME);
+
+
         this.formDBMenu(DBMenu);
+
+
         JMenuItem helpItem = new JMenuItem(HELP_ITEM_NAME);
         helpItem.addActionListener((ActionEvent a) -> {
             try {
@@ -28,22 +34,49 @@ public class MainMenuBar extends JMenuBar {
             }
         });
         HelpMenu.add(helpItem);
-        MenuFormer.addActionListener((ActionEvent a) -> {
-            MainFrame frame = (MainFrame) getTopLevelAncestor();
-            frame.changePanel(frame.getFormerPanel());
-            
-        });
+
+
+
+
+
+//        MenuFormer.addActionListener((ActionEvent a) -> {
+//            MainFrame frame = (MainFrame) getTopLevelAncestor();
+//            frame.changePanel(frame.getFormerPanel());
+//
+//        });
         JMenuItem openMenu = new JMenuItem(OPEN_MENU_ITEM_NAME);
         openMenu.addActionListener((ActionEvent e) -> {
-            File file = new File("./menus/current.xml");
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setCurrentDirectory(new File("."));
+            fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+            fileChooser.setFileFilter(new FileNameExtensionFilter("XML files", "xml"));
+            File file = new File(fileChooser.getSelectedFile().getPath());
             XMLHandler xmlHandler = new XMLHandler();
-            ArrayList<Product> products = new ArrayList<>();
-            products = xmlHandler.deserialize(file);
+            ArrayList<Product> products = xmlHandler.deserialize(file);
             RestaurantMenuPanel menuPanel  = new RestaurantMenuPanel(products);
             MainFrame frame = (MainFrame) getTopLevelAncestor();
             frame.changePanel(menuPanel);
             frame.setRestaurantMenuPanel(menuPanel);
         });
+        JMenuItem formMenuItem = new JMenuItem(FORM_MENU_ITEM_NAME);
+        formMenuItem.addActionListener((ActionEvent e) -> {
+
+            MainFrame frame = (MainFrame) getTopLevelAncestor();
+            RestaurantMenuPanel menuPanel = new RestaurantMenuPanel(frame.getMenuProoducts());
+            RestaurantMenuPanel productsPanel = new RestaurantMenuPanel(frame.getAllProoducts());
+            ControlPanel controlPanel = new ControlPanel(menuPanel.getProductsTable(),
+                    productsPanel.getProductsTable(),
+                    frame.getMenuProoducts(),
+                    frame.getAllProoducts());
+
+            FormerPanel formerPanel = new FormerPanel(menuPanel, controlPanel, productsPanel);
+            frame.changePanel(formerPanel);
+            frame.setFormerPanel(formerPanel);
+        });
+        MenuFormer.add(openMenu);
+
+
+
         this.add(MenuFormer);
         this.add(DBMenu);
         this.add(HelpMenu);

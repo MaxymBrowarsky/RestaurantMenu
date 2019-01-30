@@ -1,6 +1,11 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.io.File;
 import java.util.ArrayList;
+import javax.swing.JFileChooser.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import static java.lang.System.exit;
 
 public class ControlPanel extends JPanel{
     private JButton deleteButton;
@@ -12,7 +17,7 @@ public class ControlPanel extends JPanel{
     private JTable productsTable;
     private ArrayList<Product> restaurantMenu;
     private ArrayList<Product> products;
-    public ControlPanel() {
+    public ControlPanel(JTable menuTable, JTable productsTable, ArrayList<Product> allProoducts, ArrayList<Product> menuProducts) {
         this.addButton = new JButton(">>");
         this.addAllButton = new JButton("<<");
         this.deleteButton = new JButton(">>>>");
@@ -24,6 +29,10 @@ public class ControlPanel extends JPanel{
         this.add(deleteButton);
         this.add(deleteAllButton);
         this.add(saveButton);
+        this.menuTable = menuTable;
+        this.productsTable = productsTable;
+        this.restaurantMenu = menuProducts;
+        this.products = allProoducts;
 
 
     }
@@ -43,16 +52,30 @@ public class ControlPanel extends JPanel{
             this.menuTable.removeAll();
             this.restaurantMenu.clear();
         });
+        saveButton.addActionListener((ActionEvent e) -> {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setCurrentDirectory(new File("."));
+            fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+            fileChooser.setFileFilter(new FileNameExtensionFilter("XML files", "xml"));
+            XMLHandler xmlHandler = new XMLHandler();
+            FileHandler fh = new FileHandler();
+            RestaurantMenu rMenu = new RestaurantMenu();
+            rMenu.setRestaurantMenu(restaurantMenu);
+            fh.saveToFile(fileChooser.getSelectedFile().getPath(), xmlHandler.serialize(rMenu));
+        });
         addAllButton.addActionListener((ActionEvent e) -> {
             restaurantMenu.clear();
             for (Product p : products) {
-                restaurantMenu.add(p.clone());
+                try {
+                    restaurantMenu.add(p.clone());
+
+                } catch (Exception e) {
+                    exit(1);
+                }
             }
             ProductsModel productsModel = (ProductsModel) menuTable.getModel();
             productsModel.fireTableDataChanged();
         });
-        saveButton.addActionListener((ActionEvent e) -> {
 
-        });
     }
 }
