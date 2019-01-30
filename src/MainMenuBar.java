@@ -75,7 +75,7 @@ public class MainMenuBar extends JMenuBar {
             frame.setFormerPanel(formerPanel);
         });
         MenuFormer.add(openMenu);
-
+        MenuFormer.add(formMenuItem);
 
 
         this.add(MenuFormer);
