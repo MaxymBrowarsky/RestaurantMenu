@@ -45,9 +45,14 @@ public class ProductsModel extends AbstractTableModel {
     }
 
     @Override
+    public void fireTableDataChanged() {
+        super.fireTableDataChanged();
+    }
+    @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         super.setValueAt(aValue, rowIndex, columnIndex);
         products.get(rowIndex).update();
     }
+
 
 }

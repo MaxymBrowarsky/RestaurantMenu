@@ -4,13 +4,29 @@ public class MainFrame extends JFrame{
     private static final String TITLE_NAME = "Restaurant Menu";
     private JMenuBar menu;
     private JPanel activePanel;
-    private JPanel DBPanel;
+    private DBPanel DBPanel;
+    private FormerPanel formerPanel;
+    private RestaurantMenuPanel restaurantMenuPanel;
 
-    public JPanel getMenuFormerPanel() {
-        return MenuFormerPanel;
+    public void setDBPanel(DBPanel DBPanel) {
+        this.DBPanel = DBPanel;
     }
 
-    private JPanel MenuFormerPanel;
+    public void setFormerPanel(FormerPanel formerPanel) {
+        this.formerPanel = formerPanel;
+    }
+
+    public void setRestaurantMenuPanel(RestaurantMenuPanel restaurantMenuPanel) {
+        this.restaurantMenuPanel = restaurantMenuPanel;
+    }
+
+    public RestaurantMenuPanel getRestaurantMenuPanel() {
+        return restaurantMenuPanel;
+    }
+
+    public FormerPanel getFormerPanel() {
+        return this.formerPanel;
+    }
     public JPanel getDBPanel() {
         return DBPanel;
     }
