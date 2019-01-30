@@ -50,6 +50,7 @@ public class MainMenuBar extends JMenuBar {
             fileChooser.setCurrentDirectory(new File("."));
             fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
             fileChooser.setFileFilter(new FileNameExtensionFilter("XML files", "xml"));
+            fileChooser.showOpenDialog(null);
             File file = new File(fileChooser.getSelectedFile().getPath());
             XMLHandler xmlHandler = new XMLHandler();
             ArrayList<Product> products = xmlHandler.deserialize(file);
