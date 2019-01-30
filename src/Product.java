@@ -6,8 +6,19 @@ public class Product {
     private String Name;
     private String Description;
     private Integer Weight;
-    private Integer Price;
+    private Double Price;
     private Integer Rating;
+
+    public Product(){}
+
+    public Product(Integer Id, String Name, String Description, Integer Weight, Double Price, Integer Rating){
+        this.setId(Id);
+        this.setName(Name);
+        this.setDescription(Description);
+        this.setWeight(Weight);
+        this.setPrice(Price);
+        this.setRating(Rating);
+    }
 
     public Integer getId() {
         return Id;
@@ -45,11 +56,11 @@ public class Product {
         return this;
     }
 
-    public Integer getPrice() {
+    public Double getPrice() {
         return Price;
     }
 
-    public Product setPrice(Integer price) {
+    public Product setPrice(Double price) {
         Price = price;
         return this;
     }
@@ -64,23 +75,23 @@ public class Product {
     }
 
     /////////////////
-    public void Add(){
+    public void add(){
         try {
-            Connection.Add(this);
+            Connection.add(this);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    public void Update(){
+    public void update(){
         try {
-            Connection.Update(this);
+            Connection.update(this);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    public void Delete(){
+    public void delete(){
         try {
-            Connection.Delete(this.Id);
+            Connection.delete(this.Id);
         } catch (SQLException e) {
             e.printStackTrace();
         }

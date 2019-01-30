@@ -42,6 +42,16 @@ public class ProductsModel extends AbstractTableModel {
     @Override
     public String getColumnName(int column) {
         return colNames[column];
+
+    }
+
+    @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        if (columnIndex != 0) {
+            return true;
+        }
+        return false;
+
     }
 
     @Override
@@ -50,8 +60,21 @@ public class ProductsModel extends AbstractTableModel {
     }
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        super.setValueAt(aValue, rowIndex, columnIndex);
+
+
+        System.out.println(aValue);
+        //super.setValueAt(aValue, rowIndex, columnIndex);
+        switch(columnIndex) {
+            case 0: this.products.get(rowIndex).setId(Integer.parseInt( aValue.toString())); break;
+            case 1: this.products.get(rowIndex).setName(aValue.toString()); break;
+            case 2: this.products.get(rowIndex).setDescription(aValue.toString()); break;
+            case 3: this.products.get(rowIndex).setWeight(Integer.parseInt( aValue.toString())); break;
+            case 4: this.products.get(rowIndex).setPrice(Integer.parseInt( aValue.toString())); break;
+            case 5: this.products.get(rowIndex).setRating(Integer.parseInt( aValue.toString())); break;
+        }
         products.get(rowIndex).update();
+
+
     }
 
 
