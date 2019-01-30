@@ -42,6 +42,7 @@ public class ProductsModel extends AbstractTableModel {
     @Override
     public String getColumnName(int column) {
         return colNames[column];
+
     }
 
     @Override
@@ -50,10 +51,12 @@ public class ProductsModel extends AbstractTableModel {
             return true;
         }
         return false;
+
     }
 
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+
         System.out.println(aValue);
         //super.setValueAt(aValue, rowIndex, columnIndex);
         switch(columnIndex) {
@@ -65,6 +68,7 @@ public class ProductsModel extends AbstractTableModel {
             case 5: this.products.get(rowIndex).setRating(Integer.parseInt( aValue.toString())); break;
         }
         products.get(rowIndex).update();
+
     }
 
 }

@@ -20,6 +20,7 @@ public class DBPanel extends JPanel {
 
         JMenuItem menuItemAdd = new JMenuItem(ADD_ITEM_NAME);
         menuItemAdd.addActionListener((ActionEvent a) -> {
+            
         });
 
         JMenuItem menuItemRemove = new JMenuItem(REMOVE_ITEM_NAME);

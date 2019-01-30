@@ -2,7 +2,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 
+
+
 public class Main {
+
     public static void main(String[] args) throws SQLException {
 
 //        Object[][] cells = {{}};
@@ -13,6 +16,7 @@ public class Main {
         MainFrame mf = new MainFrame(panel);
 //        DBPanel panel = new DBPanel();
 //        MainFrame mf = new MainFrame(panel);
+
 
     }
 }
