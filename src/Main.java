@@ -1,29 +1,18 @@
 import java.sql.SQLException;
-
-
-
+import java.util.ArrayList;
 
 
 public class Main {
-    public static void main(String[] args) {
-<<<<<<< HEAD
-<<<<<<< HEAD
+    public static void main(String[] args) throws SQLException {
 
 //        Object[][] cells = {{}};
 //        DBPanel panel = new DBPanel(cells);
 //        MainFrame mf = new MainFrame(panel);
-        try {
-            Connection.Select();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-=======
+          ArrayList<Product> products =  Connection.Select();
+        DBPanel panel = new DBPanel(products);
+        MainFrame mf = new MainFrame(panel);
 //        DBPanel panel = new DBPanel();
 //        MainFrame mf = new MainFrame(panel);
->>>>>>> 72c1cb1d4f91249c55283af6eab8a6adfff6fbf2
-=======
-//        DBPanel panel = new DBPanel();
-//        MainFrame mf = new MainFrame(panel);
->>>>>>> 72c1cb1d4f91249c55283af6eab8a6adfff6fbf2
+
     }
 }

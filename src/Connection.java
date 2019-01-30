@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class Connection {
 
@@ -22,13 +23,17 @@ public class Connection {
         }
     }
 
-    public static void Select() throws SQLException {
+    public static ArrayList<Product> Select() throws SQLException {
+        ArrayList<Product> products = new ArrayList<Product>();
         ResultSet resultSet = statement.executeQuery("SELECT * FROM products");
         while (resultSet.next()){
-
-            System.out.println("qq"+resultSet.getInt(1)+resultSet.getString(2)+resultSet.getString(3)+
-                    resultSet.getInt(4)+resultSet.getInt(5)+resultSet.getInt(6));
+            Product product = new Product(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),
+                    resultSet.getInt(4),resultSet.getDouble(5),resultSet.getInt(6));
+            products.add(product);
+//            System.out.println("qq"+resultSet.getInt(1)+resultSet.getString(2)+resultSet.getString(3)+
+//                    resultSet.getInt(4)+resultSet.getInt(5)+resultSet.getInt(6));
         }
+        return products;
     }
 
     public static void add(Product product) throws SQLException {

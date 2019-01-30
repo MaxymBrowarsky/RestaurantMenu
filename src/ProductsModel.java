@@ -29,13 +29,14 @@ public class ProductsModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         Object temp = null;
         switch(columnIndex) {
-            case 0: return temp = this.products.get(rowIndex).getId();
-            case 1: return temp = this.products.get(rowIndex).getName();
-            case 2: return temp = this.products.get(rowIndex).getDescription();
-            case 3: return temp = this.products.get(rowIndex).getWeight();
-            case 4: return temp = this.products.get(rowIndex).getPrice();
-            case 5: return temp = this.products.get(rowIndex).getRating();
+            case 0: temp = this.products.get(rowIndex).getId(); break;
+            case 1: temp = this.products.get(rowIndex).getName(); break;
+            case 2: temp = this.products.get(rowIndex).getDescription(); break;
+            case 3: temp = this.products.get(rowIndex).getWeight(); break;
+            case 4: temp = this.products.get(rowIndex).getPrice(); break;
+            case 5: temp = this.products.get(rowIndex).getRating(); break;
         }
+        return temp;
     }
 
     @Override
@@ -44,9 +45,26 @@ public class ProductsModel extends AbstractTableModel {
     }
 
     @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        if (columnIndex != 0) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        super.setValueAt(aValue, rowIndex, columnIndex);
-//        products[rowIndex].update();
+        System.out.println(aValue);
+        //super.setValueAt(aValue, rowIndex, columnIndex);
+        switch(columnIndex) {
+            case 0: this.products.get(rowIndex).setId(Integer.parseInt( aValue.toString())); break;
+            case 1: this.products.get(rowIndex).setName(aValue.toString()); break;
+            case 2: this.products.get(rowIndex).setDescription(aValue.toString()); break;
+            case 3: this.products.get(rowIndex).setWeight(Integer.parseInt( aValue.toString())); break;
+            case 4: this.products.get(rowIndex).setPrice(Integer.parseInt( aValue.toString())); break;
+            case 5: this.products.get(rowIndex).setRating(Integer.parseInt( aValue.toString())); break;
+        }
+        products.get(rowIndex).update();
     }
 
 }

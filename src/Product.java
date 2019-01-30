@@ -6,12 +6,12 @@ public class Product {
     private String Name;
     private String Description;
     private Integer Weight;
-    private Integer Price;
+    private Double Price;
     private Integer Rating;
 
     public Product(){}
 
-    public Product(Integer Id, String Name, String Description, Integer Weight, Integer Price, Integer Rating){
+    public Product(Integer Id, String Name, String Description, Integer Weight, Double Price, Integer Rating){
         this.setId(Id);
         this.setName(Name);
         this.setDescription(Description);
@@ -56,11 +56,11 @@ public class Product {
         return this;
     }
 
-    public Integer getPrice() {
+    public Double getPrice() {
         return Price;
     }
 
-    public Product setPrice(Integer price) {
+    public Product setPrice(Double price) {
         Price = price;
         return this;
     }
