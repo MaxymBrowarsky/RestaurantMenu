@@ -29,13 +29,14 @@ public class ProductsModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         Object temp = null;
         switch(columnIndex) {
-            case 0: return temp = this.products.get(rowIndex).getId();
-            case 1: return temp = this.products.get(rowIndex).getName();
-            case 2: return temp = this.products.get(rowIndex).getDescription();
-            case 3: return temp = this.products.get(rowIndex).getWeight();
-            case 4: return temp = this.products.get(rowIndex).getPrice();
-            case 5: return temp = this.products.get(rowIndex).getRating();
+            case 0: temp = this.products.get(rowIndex).getId(); break;
+            case 1: temp = this.products.get(rowIndex).getName(); break;
+            case 2: temp = this.products.get(rowIndex).getDescription(); break;
+            case 3: temp = this.products.get(rowIndex).getWeight(); break;
+            case 4: temp = this.products.get(rowIndex).getPrice(); break;
+            case 5: temp = this.products.get(rowIndex).getRating(); break;
         }
+        return temp;
     }
 
     @Override
