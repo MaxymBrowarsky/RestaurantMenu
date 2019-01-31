@@ -8,6 +8,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import static java.lang.System.exit;
 
 public class ControlPanel extends JPanel{
+    private static final String ADD_BUTTON_NAME = "<<";
+    private static final String ADD_ALL_BUTTON_NAME = "<<<<";
+    private static final String DELETE_BUTTON_NAME = ">>";
+    private static final String DELETE_ALL_BUTTON_NAME = ">>>>";
+    private static final String SAVE_BUTTON_NAME = "Save";
     private JButton deleteButton;
     private JButton addButton;
     private JButton deleteAllButton;
@@ -18,12 +23,13 @@ public class ControlPanel extends JPanel{
     private ArrayList<Product> restaurantMenu;
     private ArrayList<Product> products;
     public ControlPanel(JTable menuTable, JTable productsTable, ArrayList<Product> allProoducts, ArrayList<Product> menuProducts) {
-        this.addButton = new JButton(">>");
-        this.addAllButton = new JButton("<<");
-        this.deleteButton = new JButton(">>>>");
-        this.deleteAllButton = new JButton("<<<<");
-        this.saveButton = new JButton("Save");
+        this.addButton = new JButton(ADD_BUTTON_NAME);
+        this.addAllButton = new JButton(ADD_ALL_BUTTON_NAME);
+        this.deleteButton = new JButton(DELETE_BUTTON_NAME);
+        this.deleteAllButton = new JButton(DELETE_ALL_BUTTON_NAME);
+        this.saveButton = new JButton(SAVE_BUTTON_NAME);
         initButtons();
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(addButton);
         this.add(addAllButton);
         this.add(deleteButton);
@@ -39,18 +45,17 @@ public class ControlPanel extends JPanel{
     private void initButtons() {
         deleteButton.addActionListener((ActionEvent e) -> {
             int rowIndex = this.menuTable.getSelectedRow();
-            this.menuTable.remove(rowIndex);
+            ProductsModel productsModel = (ProductsModel) this.menuTable.getModel();
+            productsModel.deleteRow(rowIndex, rowIndex, this.products, this.productsTable);
         });
         addButton.addActionListener((ActionEvent e) -> {
             int rowIndex = this.productsTable.getSelectedRow();
-            restaurantMenu.add(products.get(rowIndex));
-            ProductsModel productsModel = (ProductsModel) menuTable.getModel();
-
-            productsModel.fireTableDataChanged();
+            ProductsModel productsModel = (ProductsModel) this.productsTable.getModel();
+            productsModel.deleteRow(rowIndex, rowIndex, this.restaurantMenu, this.menuTable);
         });
         deleteAllButton.addActionListener((ActionEvent e) -> {
-            this.menuTable.removeAll();
-            this.restaurantMenu.clear();
+            ProductsModel productsModel = (ProductsModel) this.productsTable.getModel();
+            productsModel.deleteRow(0, this.products.size(), this.restaurantMenu, this.menuTable);
         });
         saveButton.addActionListener((ActionEvent e) -> {
             JFileChooser fileChooser = new JFileChooser();
@@ -65,17 +70,8 @@ public class ControlPanel extends JPanel{
             fh.saveToFile(fileChooser.getSelectedFile().getPath(), xmlHandler.serialize(rMenu));
         });
         addAllButton.addActionListener((ActionEvent e) -> {
-            restaurantMenu.clear();
-            for (Product p : products) {
-                try {
-                    restaurantMenu.add(p.clone());
-
-                } catch (Exception exp) {
-                    exit(1);
-                }
-            }
-            ProductsModel productsModel = (ProductsModel) menuTable.getModel();
-            productsModel.fireTableDataChanged();
+            ProductsModel productsModel = (ProductsModel) this.menuTable.getModel();
+            productsModel.deleteRow(0, this.restaurantMenu.size(), this.products, this.productsTable);
         });
 
     }

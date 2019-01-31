@@ -1,3 +1,4 @@
+import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
@@ -75,6 +76,22 @@ public class ProductsModel extends AbstractTableModel {
         products.get(rowIndex).update();
 
 
+    }
+    public void deleteRow(int startIndex,int endIndex, ArrayList<Product> anotherList, JTable anotherTable) {
+
+        this.fireTableRowsDeleted(startIndex, endIndex);
+        for (int i = startIndex; i < endIndex; i++) {
+            Product product = this.products.remove(startIndex);
+            if (!anotherList.contains(product)) {
+                ProductsModel pm = (ProductsModel) anotherTable.getModel();
+                pm.addRow(anotherList.size(), product);
+            }
+        }
+
+    }
+    public void addRow(int index, Product product) {
+        this.products.add(product);
+        fireTableRowsInserted(index, index);
     }
 
 
