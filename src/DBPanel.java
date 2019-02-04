@@ -12,7 +12,7 @@ public class DBPanel extends JPanel {
         "ID", "Name" , "Description", "Weight", "Price", "Rating"
     };
     public DBPanel(ArrayList<Product> products) {
-        TableModel model = new ProductsModel(products, COL_NAMES);
+        TableModel model = new ProductsModel(products, COL_NAMES, true);
 
         JTable table = new JTable(model);
 

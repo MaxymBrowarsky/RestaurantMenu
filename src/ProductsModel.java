@@ -7,11 +7,13 @@ public class ProductsModel extends AbstractTableModel {
     private int rowCount = 10;
     private ArrayList<Product> products;
     private String[] colNames;
-    public ProductsModel(ArrayList<Product> _products, String[] colNames) {
+    private boolean editable;
+    public ProductsModel(ArrayList<Product> _products, String[] colNames, boolean editable) {
         this.products = _products;
         this.columnCount = colNames.length;
         this.rowCount = _products.size();
         this.colNames = colNames;
+        this.editable = editable;
     }
 
 
@@ -49,7 +51,7 @@ public class ProductsModel extends AbstractTableModel {
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         if (columnIndex != 0) {
-            return true;
+            return editable;
         }
         return false;
 

@@ -14,6 +14,7 @@ public class MainMenuBar extends JMenuBar {
     private static final String HELP_ITEM_NAME = "Open docs";
     private static final String OPEN_MENU_ITEM_NAME = "Open file with menu";
     private static final String FORM_MENU_ITEM_NAME = "Form new menu";
+    private static final String ADD_PRODUCT_ITEM_NAME = "Add new product";
     public MainMenuBar() {
         JMenu DBMenu = new JMenu(DBMenu_NAME);
         JMenu HelpMenu = new JMenu(HELP_MENU_NAME);
@@ -86,11 +87,17 @@ public class MainMenuBar extends JMenuBar {
     }
     private JMenu formDBMenu(JMenu menu) {
         JMenuItem products = new JMenuItem(PRODUCTS_ITEM_NAME);
+        JMenuItem addProduct = new JMenuItem(ADD_PRODUCT_ITEM_NAME);
+
+        addProduct.addActionListener((ActionEvent action) -> {
+            AddingProductFrame addingProductFrame = new AddingProductFrame();
+        });
         products.addActionListener((ActionEvent action) -> {
             MainFrame frame = (MainFrame) getTopLevelAncestor();
             frame.changePanel(frame.getDBPanel());
         });
         menu.add(products);
+
         return menu;
     }
 

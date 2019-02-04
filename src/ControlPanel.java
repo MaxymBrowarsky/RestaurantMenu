@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.util.ArrayList;
@@ -73,6 +74,10 @@ public class ControlPanel extends JPanel{
             ProductsModel productsModel = (ProductsModel) this.menuTable.getModel();
             productsModel.deleteRow(0, this.restaurantMenu.size(), this.products, this.productsTable);
         });
-
+        deleteButton.setSize(new Dimension(100,20));
+        deleteAllButton.setSize(new Dimension(100,20));
+        addButton.setSize(new Dimension(100,20));
+        addAllButton.setSize(new Dimension(100,20));
+        saveButton.setSize(new Dimension(100,20));
     }
 }
