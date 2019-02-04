@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12bdaf40-d83f-49e6-a062-f6550360dbb5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/AddingProductFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ControlPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ControlPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DBPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainMenuBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainMenuBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProductsModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProductsModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RestaurantMenuPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RestaurantMenuPanel.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,11 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ControlPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="828">
-              <caret line="80" column="50" lean-forward="true" selection-start-line="80" selection-start-column="50" selection-end-line="80" selection-end-column="50" />
+            <state relative-caret-position="420">
+              <caret line="56" column="60" selection-start-line="56" selection-start-column="60" selection-end-line="56" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -64,7 +58,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AddingProductFrame.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
@@ -149,10 +143,10 @@
         <option value="$PROJECT_DIR$/src/FormerPanel.java" />
         <option value="$PROJECT_DIR$/src/ProductsModel.java" />
         <option value="$PROJECT_DIR$/src/DBPanel.java" />
-        <option value="$PROJECT_DIR$/src/ControlPanel.java" />
         <option value="$PROJECT_DIR$/src/RestaurantMenuPanel.java" />
         <option value="$PROJECT_DIR$/src/MainMenuBar.java" />
         <option value="$PROJECT_DIR$/src/AddingProductFrame.java" />
+        <option value="$PROJECT_DIR$/src/ControlPanel.java" />
       </list>
     </option>
   </component>
@@ -378,26 +372,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DBPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="70" selection-start-line="14" selection-start-column="70" selection-end-line="14" selection-end-column="70" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ControlPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="80" column="50" lean-forward="true" selection-start-line="80" selection-start-column="50" selection-end-line="80" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/RestaurantMenuPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
@@ -425,6 +399,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="49" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DBPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="70" selection-start-line="14" selection-start-column="70" selection-end-line="14" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ControlPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="56" column="60" selection-start-line="56" selection-start-column="60" selection-end-line="56" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

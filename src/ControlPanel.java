@@ -46,13 +46,15 @@ public class ControlPanel extends JPanel{
     private void initButtons() {
         deleteButton.addActionListener((ActionEvent e) -> {
             int rowIndex = this.menuTable.getSelectedRow();
+            int actualIndex = this.menuTable.getRowSorter().convertRowIndexToModel(rowIndex);
             ProductsModel productsModel = (ProductsModel) this.menuTable.getModel();
-            productsModel.deleteRow(rowIndex, rowIndex, this.products, this.productsTable);
+            productsModel.deleteRow(actualIndex, actualIndex, this.products, this.productsTable);
         });
         addButton.addActionListener((ActionEvent e) -> {
             int rowIndex = this.productsTable.getSelectedRow();
+            int actualIndex = this.menuTable.getRowSorter().convertRowIndexToModel(rowIndex);
             ProductsModel productsModel = (ProductsModel) this.productsTable.getModel();
-            productsModel.deleteRow(rowIndex, rowIndex, this.restaurantMenu, this.menuTable);
+            productsModel.deleteRow(actualIndex, actualIndex, this.restaurantMenu, this.menuTable);
         });
         deleteAllButton.addActionListener((ActionEvent e) -> {
             ProductsModel productsModel = (ProductsModel) this.productsTable.getModel();
