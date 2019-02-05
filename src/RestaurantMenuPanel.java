@@ -10,7 +10,6 @@ public class RestaurantMenuPanel extends JPanel {
             "ID", "Name" , "Description", "Weight", "Price", "Rating"
     };
     private JTable productsTable;
-
     public JTable getProductsTable() {
         return this.productsTable;
     }
@@ -21,14 +20,16 @@ public class RestaurantMenuPanel extends JPanel {
         JLabel label = new JLabel(SEARCH_LABEL);
         JTextField textField = new JTextField();
         JScrollPane scrollPane = new JScrollPane(table);
-
+        this.productsTable = table;
         TableRowSorter<ProductsModel> rowSorter = new TableRowSorter<ProductsModel>((ProductsModel) table.getModel());
+        table.setRowSorter(rowSorter);
         textField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
                 String text = textField.getText();
 
                 if (text.trim().length() == 0) {
+
                     rowSorter.setRowFilter(null);
                 } else {
                     rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
@@ -51,7 +52,6 @@ public class RestaurantMenuPanel extends JPanel {
 
             }
         });
-        table.setRowSorter(rowSorter);
 
 
         GroupLayout layout = new GroupLayout(this);
@@ -71,6 +71,5 @@ public class RestaurantMenuPanel extends JPanel {
         );
 
 
-        this.productsTable = table;
     }
 }

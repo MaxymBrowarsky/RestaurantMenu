@@ -9,6 +9,7 @@ public class MainFrame extends JFrame{
     private FormerPanel formerPanel;
     private RestaurantMenuPanel restaurantMenuPanel;
     private ArrayList<Product> allProoducts;
+    private ArrayList<Product> menuProoducts;
 
 
     public ArrayList<Product> getMenuProoducts() {
@@ -27,7 +28,6 @@ public class MainFrame extends JFrame{
         this.allProoducts = allProoducts;
     }
 
-    private ArrayList<Product> menuProoducts;
 
     public void setDBPanel(DBPanel DBPanel) {
         this.DBPanel = DBPanel;

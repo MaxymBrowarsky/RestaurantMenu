@@ -94,6 +94,19 @@ public class Product {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Product)) {
+            return false;
+        }
+        Product product = (Product) obj;
+        boolean isEqual = true;
+        if (this.getId() != product.getId()) {
+            isEqual = false;
+        }
+        return isEqual;
+    }
+
+    @Override
     protected Product clone() throws CloneNotSupportedException {
         Product product = new Product(getId(),getName(),getDescription(),getWeight(),getPrice(),getRating());
         return product;

@@ -10,7 +10,7 @@ public class AddingProductFrame extends JFrame {
     private static final String WEIGHT_LABEL_TEXT = "Adding new product";
     public AddingProductFrame() {
         setTitle(TITLE);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
         setSize(400,600);
         setContentPane(createPanel());
         setVisible(true);
