@@ -49,7 +49,7 @@ public class ControlPanel extends JPanel{
         addButton.addActionListener((ActionEvent e) -> {
             int rowIndex = this.productsTable.getSelectedRow();
             if (rowIndex >= 0) {
-                int actualIndex = this.menuTable.getRowSorter().convertRowIndexToModel(rowIndex);
+                int actualIndex = this.productsTable.getRowSorter().convertRowIndexToModel(rowIndex);
                 ProductsModel productsModel = (ProductsModel) this.productsTable.getModel();
                 productsModel.deleteRow(actualIndex, this.restaurantMenu, this.menuTable);
             }

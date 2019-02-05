@@ -1,5 +1,6 @@
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableRowSorter;
 import java.util.ArrayList;
 
 public class ProductsModel extends AbstractTableModel {
@@ -83,13 +84,23 @@ public class ProductsModel extends AbstractTableModel {
         Product product = this.products.remove(index);
         if (!anotherList.contains(product)) {
             ProductsModel pm = (ProductsModel) anotherTable.getModel();
-            pm.addRow(anotherList.size(), product);
+            pm.addRow(anotherList.size(), product, (TableRowSorter<ProductsModel>) anotherTable.getRowSorter());
         }
         this.fireTableRowsDeleted(index, index);
+        this.fireTableDataChanged();
+
     }
-    public void addRow(int index, Product product) {
+    public void addRow(int index, Product product, TableRowSorter<ProductsModel> sorter) {
         this.products.add(product);
-        fireTableRowsInserted(index, index);
+        if (sorter != null && sorter.getRowFilter() != null) {
+
+            sorter.rowsInserted(index, index);
+
+        } else {
+            fireTableRowsInserted(index, index);
+
+        }
+        this.fireTableDataChanged();
     }
 
 
