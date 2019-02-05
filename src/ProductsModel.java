@@ -79,17 +79,13 @@ public class ProductsModel extends AbstractTableModel {
 
 
     }
-    public void deleteRow(int startIndex,int endIndex, ArrayList<Product> anotherList, JTable anotherTable) {
-
-        this.fireTableRowsDeleted(startIndex, endIndex);
-        for (int i = startIndex; i < endIndex; i++) {
-            Product product = this.products.remove(startIndex);
-            if (!anotherList.contains(product)) {
-                ProductsModel pm = (ProductsModel) anotherTable.getModel();
-                pm.addRow(anotherList.size(), product);
-            }
+    public void deleteRow(int index, ArrayList<Product> anotherList, JTable anotherTable) {
+        Product product = this.products.remove(index);
+        if (!anotherList.contains(product)) {
+            ProductsModel pm = (ProductsModel) anotherTable.getModel();
+            pm.addRow(anotherList.size(), product);
         }
-
+        this.fireTableRowsDeleted(index, index);
     }
     public void addRow(int index, Product product) {
         this.products.add(product);

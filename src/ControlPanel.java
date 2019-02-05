@@ -16,25 +16,19 @@ public class ControlPanel extends JPanel{
     private static final String SAVE_BUTTON_NAME = "Save";
     private JButton deleteButton;
     private JButton addButton;
-    private JButton deleteAllButton;
-    private JButton addAllButton;
     private JButton saveButton;
     private JTable menuTable;
     private JTable productsTable;
     private ArrayList<Product> restaurantMenu;
     private ArrayList<Product> products;
     public ControlPanel(JTable menuTable, JTable productsTable, ArrayList<Product> allProoducts, ArrayList<Product> menuProducts) {
-        this.addButton = new JButton(ADD_BUTTON_NAME);
-        this.addAllButton = new JButton(ADD_ALL_BUTTON_NAME);
+        this.addButton = new JButton(ADD_BUTTON_NAME);;
         this.deleteButton = new JButton(DELETE_BUTTON_NAME);
-        this.deleteAllButton = new JButton(DELETE_ALL_BUTTON_NAME);
         this.saveButton = new JButton(SAVE_BUTTON_NAME);
         initButtons();
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(addButton);
-        this.add(addAllButton);
         this.add(deleteButton);
-        this.add(deleteAllButton);
         this.add(saveButton);
         this.menuTable = menuTable;
         this.productsTable = productsTable;
@@ -46,19 +40,19 @@ public class ControlPanel extends JPanel{
     private void initButtons() {
         deleteButton.addActionListener((ActionEvent e) -> {
             int rowIndex = this.menuTable.getSelectedRow();
-            int actualIndex = this.menuTable.getRowSorter().convertRowIndexToModel(rowIndex);
-            ProductsModel productsModel = (ProductsModel) this.menuTable.getModel();
-            productsModel.deleteRow(actualIndex, actualIndex, this.products, this.productsTable);
+            if (rowIndex >= 0) {
+                int actualIndex = this.menuTable.getRowSorter().convertRowIndexToModel(rowIndex);
+                ProductsModel productsModel = (ProductsModel) this.menuTable.getModel();
+                productsModel.deleteRow(actualIndex, this.products, this.productsTable);
+            }
         });
         addButton.addActionListener((ActionEvent e) -> {
             int rowIndex = this.productsTable.getSelectedRow();
-            int actualIndex = this.menuTable.getRowSorter().convertRowIndexToModel(rowIndex);
-            ProductsModel productsModel = (ProductsModel) this.productsTable.getModel();
-            productsModel.deleteRow(actualIndex, actualIndex, this.restaurantMenu, this.menuTable);
-        });
-        deleteAllButton.addActionListener((ActionEvent e) -> {
-            ProductsModel productsModel = (ProductsModel) this.productsTable.getModel();
-            productsModel.deleteRow(0, this.products.size(), this.restaurantMenu, this.menuTable);
+            if (rowIndex >= 0) {
+                int actualIndex = this.menuTable.getRowSorter().convertRowIndexToModel(rowIndex);
+                ProductsModel productsModel = (ProductsModel) this.productsTable.getModel();
+                productsModel.deleteRow(actualIndex, this.restaurantMenu, this.menuTable);
+            }
         });
         saveButton.addActionListener((ActionEvent e) -> {
             JFileChooser fileChooser = new JFileChooser();
@@ -72,14 +66,8 @@ public class ControlPanel extends JPanel{
             rMenu.setRestaurantMenu(restaurantMenu);
             fh.saveToFile(fileChooser.getSelectedFile().getPath(), xmlHandler.serialize(rMenu));
         });
-        addAllButton.addActionListener((ActionEvent e) -> {
-            ProductsModel productsModel = (ProductsModel) this.menuTable.getModel();
-            productsModel.deleteRow(0, this.restaurantMenu.size(), this.products, this.productsTable);
-        });
         deleteButton.setSize(new Dimension(100,20));
-        deleteAllButton.setSize(new Dimension(100,20));
         addButton.setSize(new Dimension(100,20));
-        addAllButton.setSize(new Dimension(100,20));
         saveButton.setSize(new Dimension(100,20));
     }
 }
