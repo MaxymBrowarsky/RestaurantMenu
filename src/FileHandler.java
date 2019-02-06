@@ -11,6 +11,7 @@ public class FileHandler {
             FileWriter fileWriter = new FileWriter(fileName);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(content);
+            bufferedWriter.close();
         } catch (Exception e) {
             exit(1);
         }
@@ -25,7 +26,7 @@ public class FileHandler {
                 content += line;
                 line = bufferedReader.readLine();
             }
-
+            bufferedReader.close();
         } catch (Exception e) {
             exit(1);
         }

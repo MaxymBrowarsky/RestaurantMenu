@@ -30,9 +30,11 @@ public class RestaurantMenuPanel extends JPanel {
 
                 if (text.trim().length() == 0) {
 
-                    rowSorter.setRowFilter(null);
+                    ((TableRowSorter<ProductsModel>) productsTable.getRowSorter())
+                            .setRowFilter(null);
                 } else {
-                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                    ((TableRowSorter<ProductsModel>) productsTable.getRowSorter())
+                            .setRowFilter(RowFilter.regexFilter("(?i)" + text));
                 }
             }
 
@@ -41,9 +43,10 @@ public class RestaurantMenuPanel extends JPanel {
                 String text = textField.getText();
 
                 if (text.trim().length() == 0) {
-                    rowSorter.setRowFilter(null);
+
+                    ((TableRowSorter<ProductsModel>) table.getRowSorter()).setRowFilter(null);
                 } else {
-                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                    ((TableRowSorter<ProductsModel>) table.getRowSorter()).setRowFilter(RowFilter.regexFilter("(?i)" + text));
                 }
             }
 

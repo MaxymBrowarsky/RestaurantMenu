@@ -6,6 +6,15 @@ import java.util.ArrayList;
 public class ProductsModel extends AbstractTableModel {
     private int columnCount;
     private int rowCount = 10;
+
+    public void setProducts(ArrayList<Product> products) {
+        this.products = products;
+    }
+
+    public ArrayList<Product> getProducts() {
+        return products;
+    }
+
     private ArrayList<Product> products;
     private String[] colNames;
     private boolean editable;
@@ -21,7 +30,7 @@ public class ProductsModel extends AbstractTableModel {
 
     @Override
     public int getRowCount() {
-        return this.rowCount;
+        return this.products.size();
     }
 
     @Override
@@ -84,22 +93,16 @@ public class ProductsModel extends AbstractTableModel {
         Product product = this.products.remove(index);
         if (!anotherList.contains(product)) {
             ProductsModel pm = (ProductsModel) anotherTable.getModel();
-            pm.addRow(anotherList.size(), product, (TableRowSorter<ProductsModel>) anotherTable.getRowSorter());
+
+            TableRowSorter<ProductsModel> rowSorter = (TableRowSorter<ProductsModel>) anotherTable.getRowSorter();
+            pm.addRow(anotherList.size(),product, rowSorter);
         }
-        this.fireTableRowsDeleted(index, index);
-        this.fireTableDataChanged();
+        fireTableRowsDeleted(index, index);
+
 
     }
     public void addRow(int index, Product product, TableRowSorter<ProductsModel> sorter) {
         this.products.add(product);
-        if (sorter != null && sorter.getRowFilter() != null) {
-
-            sorter.rowsInserted(index, index);
-
-        } else {
-            fireTableRowsInserted(index, index);
-
-        }
         this.fireTableDataChanged();
     }
 

@@ -5,8 +5,10 @@ import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JFileChooser.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.TableRowSorter;
 
 import static java.lang.System.exit;
+import static java.lang.System.setOut;
 
 public class ControlPanel extends JPanel{
     private static final String ADD_BUTTON_NAME = "<<";
@@ -41,17 +43,19 @@ public class ControlPanel extends JPanel{
         deleteButton.addActionListener((ActionEvent e) -> {
             int rowIndex = this.menuTable.getSelectedRow();
             if (rowIndex >= 0) {
-                int actualIndex = this.menuTable.getRowSorter().convertRowIndexToModel(rowIndex);
-                ProductsModel productsModel = (ProductsModel) this.menuTable.getModel();
-                productsModel.deleteRow(actualIndex, this.products, this.productsTable);
+                TableRowSorter<ProductsModel> rowSorter = (TableRowSorter<ProductsModel>) this.menuTable.getRowSorter();
+                int actualIndex = rowSorter.convertRowIndexToModel(rowIndex);
+                ProductsModel menuModel = (ProductsModel) this.menuTable.getModel();
+                menuModel.deleteRow(actualIndex, products, productsTable);
             }
         });
         addButton.addActionListener((ActionEvent e) -> {
             int rowIndex = this.productsTable.getSelectedRow();
             if (rowIndex >= 0) {
-                int actualIndex = this.productsTable.getRowSorter().convertRowIndexToModel(rowIndex);
-                ProductsModel productsModel = (ProductsModel) this.productsTable.getModel();
-                productsModel.deleteRow(actualIndex, this.restaurantMenu, this.menuTable);
+                TableRowSorter<ProductsModel> rowSorter = (TableRowSorter<ProductsModel>) this.productsTable.getRowSorter();
+                int actualIndex = rowSorter.convertRowIndexToModel(rowIndex);
+                ProductsModel menuModel = (ProductsModel) this.productsTable.getModel();
+                menuModel.deleteRow(actualIndex, restaurantMenu, menuTable);
             }
         });
         saveButton.addActionListener((ActionEvent e) -> {
@@ -64,7 +68,9 @@ public class ControlPanel extends JPanel{
             FileHandler fh = new FileHandler();
             RestaurantMenu rMenu = new RestaurantMenu();
             rMenu.setRestaurantMenu(restaurantMenu);
-            fh.saveToFile(fileChooser.getSelectedFile().getPath(), xmlHandler.serialize(rMenu));
+            String content = xmlHandler.serialize(rMenu);
+            System.out.println(content);;
+            fh.saveToFile(fileChooser.getSelectedFile().getPath(), content);
         });
         deleteButton.setSize(new Dimension(100,20));
         addButton.setSize(new Dimension(100,20));

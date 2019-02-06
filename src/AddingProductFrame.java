@@ -3,15 +3,17 @@ import java.awt.event.ActionEvent;
 
 public class AddingProductFrame extends JFrame {
     private static final String TITLE = "Adding new product";
-    private static final String NAME_LABEL_TEXT = "Adding new product";
-    private static final String DESC_LABEL_TEXT = "Adding new product";
-    private static final String RATING_LABEL_TEXT = "Adding new product";
-    private static final String PRICE_LABEL_TEXT = "Adding new product";
-    private static final String WEIGHT_LABEL_TEXT = "Adding new product";
+    private static final String NAME_LABEL_TEXT = "Name";
+    private static final String DESC_LABEL_TEXT = "Description";
+    private static final String RATING_LABEL_TEXT = "Rating";
+    private static final String PRICE_LABEL_TEXT = "Price";
+    private static final String WEIGHT_LABEL_TEXT = "Weight";
+    private static final String ADD_BUTTON_TEXT = "Add product";
     public AddingProductFrame() {
         setTitle(TITLE);
         setDefaultCloseOperation(HIDE_ON_CLOSE);
-        setSize(400,600);
+        setSize(400,300);
+        setResizable(false);
         setContentPane(createPanel());
         setVisible(true);
 
@@ -27,7 +29,7 @@ public class AddingProductFrame extends JFrame {
         JTextField ratingTF = new JTextField();
         JTextField priceTF = new JTextField();
         JTextField weightTF = new JTextField();
-        JButton addButton = new JButton();
+        JButton addButton = new JButton(ADD_BUTTON_TEXT);
 
         addButton.addActionListener((ActionEvent e) -> {
 
@@ -37,21 +39,26 @@ public class AddingProductFrame extends JFrame {
 
         GroupLayout layout = new GroupLayout(panel);
         panel.setLayout(layout);
-
+        layout.linkSize(SwingConstants.HORIZONTAL, nameLabel, descLabel, priceLabel, weightLabel, ratingLabel);
         layout.setHorizontalGroup(layout.createSequentialGroup()
-            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addComponent(nameLabel)
-                .addComponent(descLabel)
-                .addComponent(ratingLabel)
-                .addComponent(priceLabel)
-                .addComponent(weightLabel))
-            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addComponent(nameTF)
-                .addComponent(descTF)
-                .addComponent(ratingTF)
-                .addComponent(priceTF)
-                .addComponent(weightTF))
-            .addComponent(addButton)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(nameLabel)
+                        .addComponent(nameTF))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(descLabel)
+                        .addComponent(descTF))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(weightLabel)
+                        .addComponent(weightTF))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(priceLabel)
+                        .addComponent(priceTF))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ratingLabel)
+                        .addComponent(ratingTF))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(addButton)))
         );
 
         layout.setVerticalGroup(layout.createSequentialGroup()
