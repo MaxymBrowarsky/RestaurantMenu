@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RestaurantMenu>
+    <Product Id="3">
+        <Name>afd</Name>
+        <Description>fad</Description>
+        <Weight>2</Weight>
+        <Price>3</Price>
+        <Rating>4</Rating>
+        <description>fad</description>
+        <id>3</id>
+        <name>afd</name>
+        <price>3</price>
+        <rating>4</rating>
+        <weight>2</weight>
+    </Product>
+    <Product Id="4">
+        <Name>afd</Name>
+        <Description>fad</Description>
+        <Weight>2</Weight>
+        <Price>3</Price>
+        <Rating>4</Rating>
+        <description>fad</description>
+        <id>4</id>
+        <name>afd</name>
+        <price>3</price>
+        <rating>4</rating>
+        <weight>2</weight>
+    </Product>
+    <Product Id="15">
+        <Name>afd</Name>
+        <Description>fad</Description>
+        <Weight>2</Weight>
+        <Price>3</Price>
+        <Rating>4</Rating>
+        <description>fad</description>
+        <id>15</id>
+        <name>afd</name>
+        <price>3</price>
+        <rating>4</rating>
+        <weight>2</weight>
+    </Product>
+</RestaurantMenu>

@@ -32,7 +32,13 @@ public class AddingProductFrame extends JFrame {
         JButton addButton = new JButton(ADD_BUTTON_TEXT);
 
         addButton.addActionListener((ActionEvent e) -> {
-
+            String name = nameTF.getText();
+            String desc = descTF.getText();
+            Integer rating = Integer.parseInt(ratingTF.getText());
+            Integer price = Integer.parseInt(priceTF.getText());
+            Integer weight = Integer.parseInt(weightTF.getText());
+            Product product = new Product(Product.getNewID(), name, desc, weight, price, rating);
+            product.add();
         });
 
         JPanel panel = new JPanel();

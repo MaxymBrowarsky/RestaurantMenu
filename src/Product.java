@@ -134,4 +134,7 @@ public class Product {
             e.printStackTrace();
         }
     }
+    public static int getNewID() {
+        return Connection.getID();
+    }
 }

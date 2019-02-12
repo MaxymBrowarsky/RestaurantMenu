@@ -24,6 +24,11 @@ public class DBPanel extends JPanel {
         });
 
         JMenuItem menuItemRemove = new JMenuItem(REMOVE_ITEM_NAME);
+        menuItemRemove.addActionListener((ActionEvent a) -> {
+            int index = table.getSelectedRow();
+            Product product = products.remove(index);
+            product.delete();
+        });
         popupMenu.add(menuItemAdd);
         popupMenu.add(menuItemRemove);
         table.setComponentPopupMenu(popupMenu);
