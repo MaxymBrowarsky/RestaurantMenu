@@ -7,14 +7,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainMenuBar extends JMenuBar {
-    private static final String DBMenu_NAME = "DBMenu";
-    private static final String HELP_MENU_NAME = "Help";
-    private static final String MENU_FORMER_NAME = "Menu Former";
-    private static final String PRODUCTS_ITEM_NAME = "Products";
-    private static final String HELP_ITEM_NAME = "Open docs";
-    private static final String OPEN_MENU_ITEM_NAME = "Open file with menu";
-    private static final String FORM_MENU_ITEM_NAME = "Form new menu";
-    private static final String ADD_PRODUCT_ITEM_NAME = "Add new product";
+    private static final String DBMenu_NAME = "Редагування";
+    private static final String HELP_MENU_NAME = "Допомога";
+    private static final String MENU_FORMER_NAME = "Файл";
+    private static final String PRODUCTS_ITEM_NAME = "Продукти";
+    private static final String HELP_ITEM_NAME = "Відкрити довідку";
+    private static final String OPEN_MENU_ITEM_NAME = "Вибрати файл";
+    private static final String FORM_MENU_ITEM_NAME = "Формування меню";
+    private static final String ADD_PRODUCT_ITEM_NAME = "Додати продукт";
     public MainMenuBar() {
         JMenu DBMenu = new JMenu(DBMenu_NAME);
         JMenu HelpMenu = new JMenu(HELP_MENU_NAME);

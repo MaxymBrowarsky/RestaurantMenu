@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class MainFrame extends JFrame{
-    private static final String TITLE_NAME = "Restaurant Menu";
+    private static final String TITLE_NAME = "Формування меню ресторану";
     private JMenuBar menu;
     private JPanel activePanel;
     private DBPanel DBPanel;

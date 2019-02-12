@@ -6,10 +6,10 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 public class DBPanel extends JPanel {
-    private static final String ADD_ITEM_NAME = "ADD";
-    private static final String REMOVE_ITEM_NAME = "REMOVE";
+    private static final String ADD_ITEM_NAME = "Додати";
+    private static final String REMOVE_ITEM_NAME = "Видалити";
     private static final String[] COL_NAMES = {
-        "ID", "Name" , "Description", "Weight", "Price", "Rating"
+        "ІД", "Назва" , "Опис", "Вага", "Ціна", "Рейтинг"
     };
     public DBPanel(ArrayList<Product> products) {
         TableModel model = new ProductsModel(products, COL_NAMES, true);

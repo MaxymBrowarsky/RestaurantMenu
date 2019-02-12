@@ -5,9 +5,9 @@ import javax.swing.table.TableRowSorter;
 import java.util.ArrayList;
 
 public class RestaurantMenuPanel extends JPanel {
-    private static final String SEARCH_LABEL = "Enter name";
+    private static final String SEARCH_LABEL = "Пошуковий запит:";
     private static final String[] COL_NAMES = {
-            "ID", "Name" , "Description", "Weight", "Price", "Rating"
+            "ІД", "Назва" , "Опис", "Вага", "Ціна", "Рейтинг"
     };
     private JTable productsTable;
     public JTable getProductsTable() {

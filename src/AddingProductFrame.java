@@ -2,13 +2,13 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class AddingProductFrame extends JFrame {
-    private static final String TITLE = "Adding new product";
-    private static final String NAME_LABEL_TEXT = "Name";
-    private static final String DESC_LABEL_TEXT = "Description";
-    private static final String RATING_LABEL_TEXT = "Rating";
-    private static final String PRICE_LABEL_TEXT = "Price";
-    private static final String WEIGHT_LABEL_TEXT = "Weight";
-    private static final String ADD_BUTTON_TEXT = "Add product";
+    private static final String TITLE = "Додавання нового продукту";
+    private static final String NAME_LABEL_TEXT = "Назва";
+    private static final String DESC_LABEL_TEXT = "Опис";
+    private static final String RATING_LABEL_TEXT = "Рейтинг";
+    private static final String PRICE_LABEL_TEXT = "Ціна";
+    private static final String WEIGHT_LABEL_TEXT = "Вага";
+    private static final String ADD_BUTTON_TEXT = "Додати";
     public AddingProductFrame() {
         setTitle(TITLE);
         setDefaultCloseOperation(HIDE_ON_CLOSE);

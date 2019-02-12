@@ -15,7 +15,7 @@ public class ControlPanel extends JPanel{
     private static final String ADD_ALL_BUTTON_NAME = "<<<<";
     private static final String DELETE_BUTTON_NAME = ">>";
     private static final String DELETE_ALL_BUTTON_NAME = ">>>>";
-    private static final String SAVE_BUTTON_NAME = "Save";
+    private static final String SAVE_BUTTON_NAME = "Зберегти";
     private JButton deleteButton;
     private JButton addButton;
     private JButton saveButton;

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 
 public class Main {
-    private static final String CURRENT_MENU = "../menus/current_menu.xml";
+    private static final String CURRENT_MENU = "menus/current_menu.xml";
     public static void main(String[] args) throws SQLException, IOException {
 
 
